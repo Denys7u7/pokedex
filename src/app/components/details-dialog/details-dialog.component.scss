@@ -1,0 +1,80 @@
+::ng-deep .mat-dialog-container {
+  padding: 20px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 5px solid #6029a2;
+  border-radius: 10px;
+}
+
+.pokemon-stats {
+  h1 {
+    font-family: "KodeMono";
+  }
+
+  .pokemon-stats-table {
+    table {
+      td {
+        text-align: left;
+        font-size: 1rem;
+        width: 50%;
+        padding: 5px;
+      }
+
+      td:nth-child(2) {
+        width: 50%;
+
+        mat-progress-bar {
+          width: 80%;
+          display: inline-block;
+        }
+
+        p {
+          display: inline-block;
+          margin-left: 5px;
+          font-family: "KodeMono";
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.attributes,
+.cries {
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: "KodeMono";
+  }
+}
+
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #6029a2;
+  height: 13px;
+}
+
+::ng-deep .mat-progress-bar-buffer {
+  background: #fefefe;
+  border-radius: 15px;
+  height: 13px;
+}
+
+::ng-deep .mat-progress-bar {
+  border-radius: 15px;
+}
+
+.mat-progress-bar {
+  height: 13px !important;
+}
+
+li.ability {
+  padding: 5px;
+  border-radius: 10px;
+  cursor: default;
+  font-size: 1rem;
+  background-color: #000;
+}

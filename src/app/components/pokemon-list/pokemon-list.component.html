@@ -1,0 +1,94 @@
+<div class="search flex gap-5 items-center justify-end">
+  <div class="input-wrapper w-1/3">
+    <input
+      id="search"
+      type="text"
+      placeholder="Ingresa el nombre del pokemon"
+      (keydown.enter)="search($event)"
+      class="my-5 p-4 w-full bg-black bg-opacity-85 border-2 border-white text-white rounded-xl"
+    />
+
+    <svg
+      class="input-icon password fill-white"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <path
+        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+      />
+    </svg>
+  </div>
+</div>
+<section>
+  <table
+    mat-table
+    [dataSource]="dataSource ? dataSource! : []"
+    class="w-full text-left bg-transparent"
+    matSort
+    (matSortChange)="sortData($event)"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name | titlecase }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Weight</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.weight / 10 | number : "1.2-2" }} Kg
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="types">
+      <th mat-header-cell *matHeaderCellDef>Types</th>
+      <td mat-cell *matCellDef="let element">
+        <ul class="flex gap-2">
+          <li *ngFor="let type of element.types" [ngClass]="type.type.name">
+            {{ type.type.name | titlecase }}
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="abilities">
+      <th mat-header-cell *matHeaderCellDef>Abilities</th>
+      <td mat-cell *matCellDef="let element">
+        <ul class="flex gap-2">
+          <li *ngFor="let ability of element.abilities" class="ability">
+            {{ ability.ability.name | titlecase }}
+          </li>
+        </ul>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.image" alt="" class="w-full max-w-28" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          class="bg-[#6029a2] block rounded-lg p-3"
+          (click)="openDialog(element)"
+        >
+          Detalles
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    class="flex justify-center bg-transparent"
+    [length]="data ? data.count : 0"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 15, 20]"
+    (page)="getServerData($event)"
+    aria-label="Commerce search results"
+  ></mat-paginator>
+</section>

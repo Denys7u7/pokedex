@@ -1,1 +1,111 @@
 /* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "KodeMono";
+  src: url("../src/assets/fonts/KodeMono-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../src/assets/fonts/Poppins-Regular.ttf");
+}
+
+html,
+body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../src/assets/images/wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color-scheme: dark;
+}
+
+.normal {
+  border: 2px solid #a8a878;
+}
+
+.fighting {
+  border: 2px solid #c03028;
+}
+
+.flying {
+  border: 2px solid #a890f0;
+}
+
+.poison {
+  border: 2px solid #a040a0;
+}
+
+.ground {
+  border: 2px solid #e0c068;
+}
+
+.rock {
+  border: 2px solid #b8a038;
+}
+
+.bug {
+  border: 2px solid #a8b820;
+}
+
+.ghost {
+  border: 2px solid #705898;
+}
+
+.steel {
+  border: 2px solid #b8b8d0;
+}
+
+.fire {
+  border: 2px solid #f08030;
+}
+
+.water {
+  border: 2px solid #6890f0;
+}
+
+.grass {
+  border: 2px solid #78c850;
+}
+
+.electric {
+  border: 2px solid #f8d030;
+}
+
+.psychic {
+  border: 2px solid #f85888;
+}
+
+.ice {
+  border: 2px solid #98d8d8;
+}
+
+.dragon {
+  border: 2px solid #7038f8;
+}
+
+.dark {
+  border: 2px solid #705848;
+}
+
+.fairy {
+  border: 2px solid #ee99ac;
+}
+
+.ability {
+  border: 2px solid #fff;
+}
